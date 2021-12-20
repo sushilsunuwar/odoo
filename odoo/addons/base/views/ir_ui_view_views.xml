@@ -92,7 +92,7 @@
             </field>
         </record>
 
-        <record id="action_ui_view" model="ir.actions.act_window">
+        <record id="action_ui_view" model="ir.actions.act_window"     >
             <field name="name">Views</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">ir.ui.view</field>
