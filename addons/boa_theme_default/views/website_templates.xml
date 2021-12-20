@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="layout_id" inherit_id="web.layout" name="layout name" priority="17">
+            <xpath expr="//head//link" position="after">
+                <link rel="shortcut icon" href="/boa_theme_default/static/src/img/favicon.ico" type="image/x-icon"/>
+            </xpath>
+        </template>
+
+        <record id="base.action_ui_view" model="ir.actions.act_window">
+            <field name="help">Views allows you to personalize each view of BOA. You can add new fields, move fields, rename them or delete the ones that you do not need.</field>
+        </record>
+    </data>
+</odoo>

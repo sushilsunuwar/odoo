@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-extend="UserMenu.Actions">
+        <t t-jquery="a[data-menu='account']">
+            this.remove();
+        </t>
+    </t>
+
+    <t t-inherit="mail.NotificationRequest" t-inherit-mode="extension">
+        <xpath expr="//div/div/div/img" position="replace">
+            <img class="o_NotificationRequest_image rounded-circle" src="/boa_theme_default/static/src/img/ionTone.svg" alt="Avatar of ionTone" />
+        </xpath>
+    </t>
+
+    <t t-inherit="mail.MessagingMenu" t-inherit-mode="extension">
+        <xpath expr="//li/a/i" position="replace">
+            <i class="o_MessagingMenu_icon paifont pai-xiaoxi" role="img" aria-label="Messages" />
+        </xpath>
+    </t>
+
+
+    <t t-extend="mail.systray.ActivityMenu">
+        <t t-jquery=".fa " t-operation="replace">
+            <i class="paifont pai-jijiangshouqing" role="img" aria-label="Activities" />
+        </t>
+    </t>
+
+
+    <t t-extend="mail.systray.ActivityMenu">
+        <t t-jquery=".fa " t-operation="replace">
+            <i class="paifont pai-jijiangshouqing" role="img" aria-label="Activities" />
+        </t>
+    </t>
+
+    <t t-extend="AppsMenu">
+        <t t-jquery=".fa " t-operation="replace">
+            <i class="paifont pai-menu" />
+        </t>
+    </t>
+
+<!-- 
+    <t t-extend="Menu">
+        <t t-jquery=".o_menu_brand" t-operation="before">
+            <ul>
+                <img src='/boa_theme_default/static/src/img/hyperB-logo.png' />
+            </ul>
+        </t>
+    </t> -->
+
+
+    <!-- <t t-extend="web.ActionMenus">
+        <t t-jquery=".btn-group" t-operation="replace">
+            <i class="paifont pai-menu" />
+        </t>
+    </t> -->
+
+
+    <!-- 
+    <t t-inherit="web.ActionMenus" t-inherit-mode="extension">
+        <xpath expr="//div[@class='o_cp_action_menus']" position="replace">
+            <i class="paifont pai-menu" />
+        </xpath>
+    </t> -->
+
+    <t t-inherit="web.SearchBar" t-inherit-mode="extension">
+        <xpath expr="//div/div/span" position="replace">
+            <span t-if="facet.icon" t-attf-class="o_searchview_facet_label  paifont  pai-screening" />
+        </xpath>
+    </t>
+
+    <t t-inherit="mail.ThreadPreview" t-inherit-mode="extension">
+        <!-- <xpath expr="//div/div/div" position="after">
+           Hello
+        </xpath> -->
+    </t>
+
+    <!-- <t t-inherit="mail.Message" t-inherit-mode="extension">
+        <xpath expr="//*[@name='rootCondition']"  position="replace">
+            <div>Hello</div>
+        </xpath>
+    </t> -->
+
+    <!-- <t t-inherit="mail.Message" t-inherit-mode="extension">
+        <xpath expr="//*[@name='failureIcon']" position="replace">
+            <t t-if="message.message_type === 'sms'">
+                <i class="o_Message_notificationIcon fa fa-mobile"/> SMS
+            </t>
+            <t t-else="">$0</t>
+        </xpath>
+
+        <xpath expr="//*[@name='notificationIcon']" position="replace">
+            <t t-if="message.message_type === 'sms'">
+                <i class="o_Message_notificationIcon fa fa-mobile"/> SMS
+            </t>
+            <t t-else="">$0</t>
+        </xpath>
+    </t> -->
+
+    <t t-inherit="mail.Message" t-inherit-mode="extension">
+        <xpath expr="//*[@name='rootCondition']" position="inside">
+            <!-- <t t-elif="thread.channel_type === 'livechat'">
+                <t t-if="thread.orderedOtherTypingMembers.length > 0">
+                    <ThreadTypingIcon
+                        class="o_ThreadIcon_typing"
+                        animation="'pulse'"
+                        title="thread.typingStatusText"
+                    />
+                </t>
+                <t t-else="">
+                    <div class="fa fa-comments" title="Livechat"/>
+                </t>
+            </t> -->
+        </xpath>
+    </t>
+
+
+    <!-- <t t-inherit="web.ControlPanel" t-inherit-mode="extension">
+        <xpath expr="//div/div/div/div/div/i" position="replace">
+
+            <i class="o_searchview_icon paifont pai-sousuo" title="Search..." role="img" aria-label="Search..." />
+
+        </xpath>
+    </t> -->
+
+    <t t-extend="web.ControlPanel">
+        <t t-jquery=".o_control_panel" t-operation="replace">
+            <i class="paifont pai-menu" />
+        </t>
+    </t>
+
+
+    <!-- <t t-name="mail.systray.ActivityMenu">
+       
+    </t> -->
+
+
+</templates>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="_assets_primary_variables" inherit_id="web._assets_primary_variables">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/scss" href="/boa_theme_default/static/src/scss/theme_style.scss" />
+            </xpath>
+        </template>
+
+        <template id="assets_common" inherit_id="web.assets_common">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/scss" href="/boa_theme_default/static/src/css/iconfont/iconfont.css" />
+                <link rel="stylesheet" type="text/scss" href="/boa_theme_default/static/src/scss/base_style.scss" />
+            </xpath>
+        </template>
+
+        <template id="assets_backend" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/scss" href="/boa_theme_default/static/src/scss/base_style.scss" />
+                <!-- <script type="text/javascript" src="/boa_theme_default/static/src/js/script.js"></script>-->
+            </xpath>
+        </template>
+
+        <template id="base_setup_assets_backend" inherit_id="base_setup.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/scss" href="/boa_theme_default/static/src/scss/base_style.scss" />
+            </xpath>
+        </template>
+
+
+        <template id="layout" inherit_id="web.layout">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/boa_theme_default/static/src/js/script.js"></script>
+            </xpath>
+
+            <xpath expr="//head/title" position="replace">
+                <title t-esc="title or 'HyperB'" />
+            </xpath>
+        </template>
+
+        <template id="assets_frontend" inherit_id="web.assets_frontend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/scss" href="/boa_theme_default/static/src/scss/base_style.scss" />
+            </xpath>
+        </template>
+
+        <!-- <template id="portal_record_sidebar" inherit_id="portal.portal_record_sidebar" name="My Portal Record Sidebar">
+            <xpath expr="." position="replace">
+                <div t-attf-class="#{classes}">
+                    <div class="card bg-white mb-4 sticky-top" id="sidebar_content">
+                        <div t-if="title" class="card-body text-center pb-2 pt-3">
+                            <t t-raw="title" />
+                        </div>
+                        <t t-if="entries" t-raw="entries" /> -->
+                        <!-- <div class="card-footer small text-center text-muted border-top-0 pt-1 pb-1 d-none d-lg-block">
+                        Powered by <a target="_blank" href="http://www.odoo.com?utm_source=db&amp;utm_medium=portal" title="odoo"><img src="/web/static/src/img/logo.png" alt="Odoo Logo" height="15"/></a>
+                    </div> -->
+                    <!-- </div>
+                </div>
+            </xpath>
+        </template> -->
+
+        <template id="login_layout" inherit_id="web.login_layout" name="Custom Login Layout">
+
+            <xpath expr='//div[@class="card-body"]/div[2]' position="replace">
+                <div></div>
+            </xpath>
+        </template>
+
+
+    </data>
+</odoo>
