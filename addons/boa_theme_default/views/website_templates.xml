@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
-        <template id="layout_id" inherit_id="web.layout" name="layout name" priority="17">
-            <xpath expr="//head//link" position="after">
-                <link rel="shortcut icon" href="/boa_theme_default/static/src/img/favicon.ico" type="image/x-icon"/>
-            </xpath>
-        </template>
+  <data>
+    <template id="layout_id" inherit_id="web.layout" name="layout name" priority="17">
+      <xpath expr="//head//link" position="after">
+        <link rel="shortcut icon" href="/boa_theme_default/static/src/img/favicon.ico" type="image/x-icon" />
+      </xpath>
+    </template>
 
-        <record id="base.action_ui_view" model="ir.actions.act_window">
-            <field name="help">Views allows you to personalize each view of BOA. You can add new fields, move fields, rename them or delete the ones that you do not need.</field>
-        </record>
-    </data>
+    <record id="base.action_ui_view" model="ir.actions.act_window">
+      <field name="help">Views allows you to personalize each view of BOA. You can add new fields, move fields, rename them or delete the ones that you do not need.</field>
+    </record>
+
+    <record model="ir.ui.view" id="base.module_view_kanban">
+      <field name="name">Apps Kanban</field>
+      <field name="model">ir.module.module</field>
+      <field name="arch" type="xml">
+        <kanban create="false" class="o_modules_kanban">
+
+         
+          <field name="icon" />
+          <field name="to_buy" />
+          <field name="name" />
+          <field name="state" />
+          <field name="summary" />
+          <field name="website" />
+          <field name="application" />
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_module_vignette">
+                <t t-set="installed" t-value="record.state.raw_value == 'installed'" />
+                <div class="o_dropdown_kanban dropdown" tabindex="-1">
+                  <a class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" role="button" aria-label="Dropdown menu" title="Dropdown menu">
+                    <span class="fa fa-ellipsis-h" />
+                  </a>
+                  <div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <a type="edit" class="dropdown-item"> <i class="fa fa-info-circle kb_dp_icon kb_dp_icon_dark " ></i> Module Info</a>
+                    <a t-if="record.website.raw_value" role="menuitem" class="dropdown-item o-hidden-ios" t-att-href="record.website.raw_value" target="_blank">
+                      <i class="fa fa-book kb_dp_icon kb_dp_icon_blue" ></i>
+                      Learn More
+                    </a>
+                    <a t-if="installed" name="button_immediate_upgrade" type="object" role="menuitem" class="dropdown-item"> <i class="fa fa-arrow-circle-o-up kb_dp_icon kb_dp_icon_green" ></i>Upgrade</a>
+                    <a t-if="installed" name="button_uninstall_wizard" type="object" role="menuitem" class="dropdown-item"><i class="fa fa-minus-circle kb_dp_icon kb_dp_icon_red" ></i> Uninstall</a>
+                  </div>
+                </div>
+                <!-- <img t-attf-src="#{record.icon.value}" class="oe_module_icon" alt="Icon"/> -->
+                <div class="oe_module_desc" t-att-title="record.shortdesc.value">
+                  <h4 class="o_kanban_record_title">
+                    <field name="shortdesc" />
+                    &amp;nbsp;
+                  </h4>
+                  <p class="oe_module_name">
+                    <field groups="!base.group_no_one" name="summary" />
+                    <code groups="base.group_no_one">
+                      <field name="name" />
+                    </code>
+                  </p>
+                  <div class="oe_module_action">
+                    <!-- <a t-att-href="record.website.raw_value" target="_blank" attrs="{'invisible':[('website', '=', '')]}" class="btn btn-sm btn-secondary btn-round float-right o-hidden-ios azaas_btn" role="button">Learn More</a>
+                    <a type="edit" class="btn btn-secondary btn-sm float-right btn-round" role="button" attrs="{'invisible': [('website', '&lt;&gt;', '')]}">Module Info</a> -->
+                    <button type="object" class="btn btn-primary btn-sm btn-round " name="button_immediate_install" states="uninstalled" t-if="! record.to_buy.raw_value">Install</button>
+                    <a href="https://odoo.com/pricing?utm_source=db&amp;utm_medium=module#hosting=on_premise" class="btn btn-info btn-sm btn-round azaas_btn" states="uninstalled,uninstallable" t-if="record.to_buy.raw_value" role="button">Upgrade</a>
+                    <div t-if="installed" class="text-muted float-left">Installed</div>
+                    <button states="to remove" type="object" class="btn btn-sm btn-primary" name="button_uninstall_cancel">Cancel Uninstall</button>
+                    <button states="to install" type="object" class="btn btn-sm btn-primary" name="button_install_cancel">Cancel Install</button>
+                    <img t-attf-src="#{record.icon.value}" class="oe_module_icon" alt="Icon"/>
+                  </div>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+  </data>
 </odoo>
